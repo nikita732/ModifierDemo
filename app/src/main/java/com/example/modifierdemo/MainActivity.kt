@@ -3,6 +3,7 @@ package com.example.modifierdemo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.border
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -31,12 +32,16 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun DemoScreen(modifier: Modifier = Modifier) {
+    val mymodifier = modifier
+        .border(width = 2.dp, color = Color.Black)
+        .padding(all = 16.dp)
+
     Text(
         text = "Hello Compose",
+        modifier = mymodifier,
         fontSize = 40.sp,
         fontWeight = FontWeight.Bold,
-        color = Color.Black,
-        modifier = modifier.padding(16.dp)
+        color = Color.Black
     )
 }
 
