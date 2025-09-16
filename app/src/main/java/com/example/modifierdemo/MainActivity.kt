@@ -14,6 +14,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
 import com.example.modifierdemo.ui.theme.ModifierDemoTheme
 import androidx.compose.foundation.Image
 import androidx.compose.ui.res.painterResource
@@ -62,7 +64,13 @@ fun DemoScreen(modifier: Modifier = Modifier) {
             fontWeight = FontWeight.Bold
         )
         Spacer(Modifier.height(16.dp))
-        CustomImage(R.drawable.vacation)
+        CustomImage(
+            image = R.drawable.vacation,
+            modifier = Modifier
+                .padding(16.dp)
+                .width(270.dp)
+                .clip(RoundedCornerShape(30.dp))
+        )
     }
 }
 
