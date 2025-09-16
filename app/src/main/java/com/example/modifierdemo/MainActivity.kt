@@ -3,6 +3,7 @@ package com.example.modifierdemo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.ui.Alignment
 import androidx.compose.foundation.border
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.*
@@ -14,6 +15,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.modifierdemo.ui.theme.ModifierDemoTheme
+import androidx.compose.foundation.Image
+import androidx.compose.ui.res.painterResource
+
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,19 +36,36 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
+fun CustomImage(image: Int, modifier: Modifier = Modifier) {
+    Image(
+        painter = painterResource(id = image),
+        contentDescription = null,
+        modifier
+    )
+}
+
+@Composable
 fun DemoScreen(modifier: Modifier = Modifier) {
     val mymodifier = modifier
         .padding(all = 16.dp)
         .border(width = 2.dp, color = Color.Black)
 
-    Text(
-        text = "Hello Compose",
-        modifier = mymodifier,
-        fontSize = 40.sp,
-        fontWeight = FontWeight.Bold,
-        color = Color.Black
-    )
+    Column(
+        Modifier.padding(20.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            "Hello Compose",
+            mymodifier,
+            fontSize = 40.sp,
+            fontWeight = FontWeight.Bold
+        )
+        Spacer(Modifier.height(16.dp))
+        CustomImage(R.drawable.vacation)
+    }
 }
+
 
 @Preview(showBackground = true)
 @Composable
